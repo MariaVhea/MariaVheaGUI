@@ -33,11 +33,10 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         Lbutton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -57,19 +56,19 @@ public class UserDashboard extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel2)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 390, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 390, 100));
 
-        jPanel2.setBackground(new java.awt.Color(102, 19, 171));
+        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 3, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel4.setText("WELCOME USER!");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 40));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 600, 50));
 
-        Lbutton.setBackground(new java.awt.Color(255, 255, 255));
+        Lbutton.setBackground(new java.awt.Color(153, 0, 0));
         Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         Lbutton.setText("LOGOUT");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,13 +76,9 @@ public class UserDashboard extends javax.swing.JFrame {
                 LbuttonActionPerformed(evt);
             }
         });
-        jPanel2.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 100, 40));
+        jPanel2.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 100, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 60));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/artificial-intelligence-circuit-electric-line-600nw-2465096659.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 900, 480));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +88,7 @@ public class UserDashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
         );
 
         pack();
@@ -142,7 +137,6 @@ public class UserDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Lbutton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

@@ -37,95 +37,113 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jCheckBox1 = new javax.swing.JCheckBox();
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
+        Lbutton = new javax.swing.JButton();
+        Rbutton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        Rbutton = new javax.swing.JButton();
-        Lbutton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(102, 19, 171));
+        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Bookman Old Style", 3, 24)); // NOI18N
-        jLabel4.setText("WELCOME TO VIOLATION TRACKER SYSTEM");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 600, 40));
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Student Violation Tracker");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 560, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 100));
 
+        jPanel3.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jCheckBox1.setBackground(new java.awt.Color(153, 0, 0));
+        jCheckBox1.setForeground(new java.awt.Color(153, 0, 0));
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, 30, 30));
+
+        user.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userActionPerformed(evt);
             }
         });
-        jPanel1.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 140, 30));
+        jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 260, 30));
 
         pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passActionPerformed(evt);
             }
         });
-        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 140, 30));
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Username:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 90, 40));
-
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Password:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 90, 40));
-
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 30, 30));
-
-        Rbutton.setBackground(new java.awt.Color(255, 255, 255));
-        Rbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Rbutton.setText("REGISTER");
-        Rbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RbuttonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Rbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, -1, 40));
+        jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 260, 30));
 
         Lbutton.setBackground(new java.awt.Color(255, 255, 255));
-        Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Lbutton.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
         Lbutton.setText("LOGIN");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LbuttonActionPerformed(evt);
             }
         });
-        jPanel1.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 100, 40));
+        jPanel3.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 110, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/artificial-intelligence-circuit-electric-line-600nw-2465096659.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 900, 480));
+        Rbutton.setBackground(new java.awt.Color(255, 255, 255));
+        Rbutton.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
+        Rbutton.setText("REGISTER");
+        Rbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RbuttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Rbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 110, 30));
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Username:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 90, 30));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Password:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 90, 30));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("LOGIN FORM");
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 270, 60));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/wew-removebg-preview.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-160, 10, 750, 380));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 890, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -253,8 +271,10 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables

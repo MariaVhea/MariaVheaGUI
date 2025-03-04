@@ -184,12 +184,12 @@ public class LoginForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                     switch (userType.toLowerCase()) {
-                        case "guidance counsilor":
+                        case "guidance counselor":
                         
-                        new mariavhea.AdminDashboard().setVisible(true);
+                        new Admin.AdminDashboard().setVisible(true);
                         break;
                         case "dean":
-                        new mariavhea.UserDashboard().setVisible(true);
+                        new Admin.UserDashboard().setVisible(true);
                         break;
                         default:
                         JOptionPane.showMessageDialog(this, "Invalid User Type!", "Error", JOptionPane.ERROR_MESSAGE);

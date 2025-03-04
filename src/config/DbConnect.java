@@ -3,6 +3,7 @@ package config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DbConnect {
@@ -17,14 +18,13 @@ public class DbConnect {
         }
     }
 
-    
     public Connection getConnection() {
         return connect;
     }
 
-    public int insertUser(String fname, String lname, String contactnum, String email,String UserType, String reguser, String regpass) {
-        int result = 0; 
-        String sql = "INSERT INTO users (fn, ln, cn, em,type, us, ps, status) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+    public int insertUser(String fname, String lname, String contactnum, String email, String UserType, String reguser, String regpass) {
+        int result = 0;
+        String sql = "INSERT INTO users (fn, ln, cn, em, type, us, ps, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pst = connect.prepareStatement(sql)) {
             pst.setString(1, fname);
@@ -43,6 +43,14 @@ public class DbConnect {
         }
         return result;
     }
-    
 
+    public ResultSet getData(String query) {
+        try {
+            PreparedStatement pst = connect.prepareStatement(query);
+            return pst.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("Query Error: " + ex.getMessage());
+            return null;
+        }
+    }
 }

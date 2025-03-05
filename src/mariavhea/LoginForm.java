@@ -6,6 +6,7 @@
 package mariavhea;
 
 import config.DbConnect;
+import config.Session;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -162,7 +163,7 @@ public class LoginForm extends javax.swing.JFrame {
             return;
         }
 
-        String sql = "SELECT ps, status, type FROM users WHERE us = ?";
+     String sql = "SELECT u_id, fn, ln, em, us, ps, status, type FROM users WHERE us = ?";
 
         try (Connection connect = new DbConnect().getConnection();
             PreparedStatement pst = connect.prepareStatement(sql)) {
@@ -181,6 +182,18 @@ public class LoginForm extends javax.swing.JFrame {
                 }
 
                 if (passwordInput.equals(dbPassword)) {
+                     
+                    Session sess = Session.getInstance();
+                    sess.setUid(rs.getInt("u_id"));
+                    sess.setFname(rs.getString("fn"));
+                    sess.setLname(rs.getString("ln"));
+                    sess.setEmail(rs.getString("em"));
+                    sess.setUsername(rs.getString("us"));
+                    sess.setType(rs.getString("type"));
+                    sess.setStatus(rs.getString("status"));
+                  
+                    
+                    
                     JOptionPane.showMessageDialog(this, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                     switch (userType.toLowerCase()) {

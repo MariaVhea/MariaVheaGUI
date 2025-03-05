@@ -6,6 +6,7 @@
 package Admin;
 
 import config.DbConnect;
+import config.Session;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,12 +47,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        acc_name = new javax.swing.JLabel();
+        acc_lname = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,9 +98,13 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(153, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ADMIN");
+        acc_name.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        acc_name.setForeground(new java.awt.Color(255, 255, 255));
+        acc_name.setText("ADMIN");
+
+        acc_lname.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        acc_lname.setForeground(new java.awt.Color(255, 255, 255));
+        acc_lname.setText("ADMIN");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -101,31 +112,27 @@ public class AdminDashboard extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(jLabel1)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(acc_name)
+                    .addComponent(acc_lname))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(130, 130, 130)
-                .addComponent(jLabel1)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addComponent(acc_name)
+                .addGap(18, 18, 18)
+                .addComponent(acc_lname)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 440));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/pngtree-three-people-icon-vector-design-png-image_6961603-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 210, 200));
-
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("USER");
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 60, 40));
+        jLabel4.setText("USERS");
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 80, 40));
 
         jPanel6.setBackground(new java.awt.Color(255, 0, 0));
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,6 +141,16 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         jPanel6.setLayout(null);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/pngtree-three-people-icon-vector-design-png-image_6961603-removebg-preview__1_-removebg-preview.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel6.add(jLabel3);
+        jLabel3.setBounds(-6, -20, 216, 200);
+
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 200, 190));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 910, 440));
@@ -161,6 +178,20 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel6MouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+      Session sess = Session.getInstance();
+      
+      if(sess.getUid()==0){
+          JOptionPane.showMessageDialog(null, "No Account, Login First!");
+         LoginForm loginForm = new LoginForm();
+         loginForm.setVisible(true);
+         this.dispose();
+      }else{
+      
+      acc_name.setText(""+sess.getFname());
+      acc_lname.setText(""+sess.getLname());
+    }//GEN-LAST:event_formWindowActivated
+    }
     /**
      * @param args the command line arguments
      */
@@ -198,7 +229,8 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Lbutton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel acc_lname;
+    private javax.swing.JLabel acc_name;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

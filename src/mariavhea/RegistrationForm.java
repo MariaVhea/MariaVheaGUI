@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import mariavhea.LoginForm;
 
@@ -204,7 +205,8 @@ public class RegistrationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_userRegActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        String[] userTypes = {"admin", "user"};
+
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed

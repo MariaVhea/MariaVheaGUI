@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import mariavhea.LoginForm;
+import Login.LoginForm;
 
 /**
  *
@@ -63,14 +63,14 @@ public class userForm extends javax.swing.JFrame {
         refresh = new javax.swing.JButton();
         update = new javax.swing.JButton();
         delete = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         clear = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
@@ -162,7 +162,7 @@ public class userForm extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 520));
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(153, 0, 0));
@@ -249,9 +249,6 @@ public class userForm extends javax.swing.JFrame {
         });
         jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 110, 30));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/school-removebg-preview.png"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, 161));
-
         clear.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         clear.setText("CLEAR");
         clear.addActionListener(new java.awt.event.ActionListener() {
@@ -270,9 +267,13 @@ public class userForm extends javax.swing.JFrame {
         });
         jPanel1.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 110, 30));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/copilot_image_1741498817306-removebg-preview (1).png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, 350));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void FnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FnameActionPerformed
@@ -397,7 +398,90 @@ try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
     }//GEN-LAST:event_refreshActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        // TODO add your handling code here:
+
+   String fname = Fname.getText().trim();
+   String lname = Lname.getText().trim();
+   String username = userReg.getText().trim();
+   String email = Email.getText().trim();
+   String password = Passreg.getText().trim();
+   String cn = Number.getText().trim();
+   String accountType = jComboBox1.getSelectedItem().toString();
+   String userStatus = ustatus.getSelectedItem().toString();
+   String userId = uid.getText().trim(); // Ensure you have the user ID
+
+
+     if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() || 
+    username.isEmpty() || password.isEmpty() || userId.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "All fields are required.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+     if (!fname.matches("[a-zA-Z ]+") || !lname.matches("[a-zA-Z ]+")) {
+    JOptionPane.showMessageDialog(this, "Only letters are allowed for First and Last Name.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+     String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+     if (!email.matches(emailRegex)) {
+    JOptionPane.showMessageDialog(this, "Invalid Email!", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+     if (!username.matches("[a-zA-Z0-9_]{5,}")) {
+    JOptionPane.showMessageDialog(this, "Username must be at least 5 characters long and contain only letters, numbers, and underscores.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+      if (!password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
+    JOptionPane.showMessageDialog(this, "Password must be at least 8 characters, contain one uppercase letter, one special character, and one number.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+    System.out.println("Debug: Validation passed, checking for existing email and username...");
+
+    try (Connection conn = new DbConnect().getConnection()) {
+   
+    String checkSql = "SELECT COUNT(*) FROM users WHERE (em = ? OR us = ?) AND u_id != ?";
+    try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+        checkStmt.setString(1, email);
+        checkStmt.setString(2, username);
+        checkStmt.setString(3, userId);
+        
+        ResultSet rs = checkStmt.executeQuery();
+        if (rs.next() && rs.getInt(1) > 0) {
+            JOptionPane.showMessageDialog(this, "Email or Username is already in use by another user!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
+
+    System.out.println("Debug: No duplicate email or username found, updating user data...");
+
+    // Proceed with update
+    String sql = "UPDATE users SET fn = ?, ln = ?, cn = ?, em = ?, us = ?, ps = ?, type = ?, status = ? WHERE u_id = ?";
+    try (PreparedStatement pst = conn.prepareStatement(sql)) {
+        pst.setString(1, fname);
+        pst.setString(2, lname);
+        pst.setString(3, cn);
+        pst.setString(4, email);
+        pst.setString(5, username);
+        pst.setString(6, password); 
+        pst.setString(7, accountType);
+        pst.setString(8, userStatus);
+        pst.setString(9, userId);
+
+        int rowsAffected = pst.executeUpdate();
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(this, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Update failed. User not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+} catch (SQLException ex) {
+    JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
+
+
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed

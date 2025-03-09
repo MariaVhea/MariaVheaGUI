@@ -5,6 +5,8 @@
  */
 package Admin;
 
+import Admin.AdminDashboard;
+import Admin.userForm;
 import config.DbConnect;
 import config.Session;
 import java.awt.Color;
@@ -12,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
-import mariavhea.LoginForm;
+import Login.LoginForm;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -29,8 +31,8 @@ public class UserDashboard extends javax.swing.JFrame {
         displayData();
     }
     
-    Color navcolor = new Color(153, 0, 0);
-    Color hovercolor = new Color(204, 0, 0);
+    Color navcolor = new Color(0, 102, 102);
+    Color hovercolor = new Color(0, 153, 153);
     
     public void displayData(){
         try{
@@ -71,7 +73,6 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         p_add = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         edit = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -82,10 +83,10 @@ public class UserDashboard extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -103,7 +104,7 @@ public class UserDashboard extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 110, 50));
 
-        Lbutton.setBackground(new java.awt.Color(153, 0, 0));
+        Lbutton.setBackground(new java.awt.Color(0, 102, 102));
         Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         Lbutton.setText("LOGOUT");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,16 +132,16 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 107, 630, 390));
 
-        jPanel3.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel3.setBackground(new java.awt.Color(0, 102, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/pngtree-three-people-icon-vector-design-png-image_6961603-removebg-preview__1_-removebg-preview.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Iconos_gratuitos_de_Mujer_diseñados_por_Freepik__1_-removebg-preview.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 210, 143));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 143));
 
         acc_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,7 +153,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel7.setText("Current User");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 357, -1, 28));
 
-        p_add.setBackground(new java.awt.Color(153, 0, 0));
+        p_add.setBackground(new java.awt.Color(0, 102, 102));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 p_addMouseClicked(evt);
@@ -164,36 +165,17 @@ public class UserDashboard extends javax.swing.JFrame {
                 p_addMouseExited(evt);
             }
         });
+        p_add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ADD");
-
-        javax.swing.GroupLayout p_addLayout = new javax.swing.GroupLayout(p_add);
-        p_add.setLayout(p_addLayout);
-        p_addLayout.setHorizontalGroup(
-            p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_addLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
-        );
-        p_addLayout.setVerticalGroup(
-            p_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_addLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        p_add.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 0, 60, 40));
 
         jPanel3.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 210, 40));
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("USER");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 160, 60, 40));
-
-        edit.setBackground(new java.awt.Color(153, 0, 0));
+        edit.setBackground(new java.awt.Color(0, 102, 102));
         edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editMouseClicked(evt);
@@ -205,29 +187,15 @@ public class UserDashboard extends javax.swing.JFrame {
                 editMouseExited(evt);
             }
         });
+        edit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("EDIT");
+        edit.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 0, 60, 40));
 
-        javax.swing.GroupLayout editLayout = new javax.swing.GroupLayout(edit);
-        edit.setLayout(editLayout);
-        editLayout.setHorizontalGroup(
-            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editLayout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
-        );
-        editLayout.setVerticalGroup(
-            editLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, editLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
+        jPanel3.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 210, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 210, 430));
 
@@ -243,6 +211,7 @@ public class UserDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
@@ -376,7 +345,6 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;

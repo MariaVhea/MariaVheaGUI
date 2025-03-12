@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import Login.LoginForm;
+import config.PassHasher;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -215,16 +217,19 @@ public class RegistrationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_EmailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+        
         String fname = Fname.getText().trim();
         String lname = Lname.getText().trim();
         String username = userReg.getText().trim();
         String email = Email.getText().trim();
-        String password = Passreg.getText().trim();
+        String pass = Passreg.getText().trim();
         String cn = Number.getText().trim();
         String type = jComboBox1.getSelectedItem().toString();
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-        if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty()) {
+        if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() || username.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(this, "All fields are required. Please fill out the form.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -249,7 +254,7 @@ public class RegistrationForm extends javax.swing.JFrame {
             return;
         }
 
-        if (!password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
+        if (!pass.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
             JOptionPane.showMessageDialog(this, "Invalid Password! Must be at least 8 characters long, contain one uppercase letter, one special character, and one number.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -257,6 +262,20 @@ public class RegistrationForm extends javax.swing.JFrame {
         System.out.println("Debug: Validation passed, checking for duplicates...");
 
         try (Connection connect = new DbConnect().getConnection()) {
+            
+       String hashedPassword = ""; // Declare variable outside to make it accessible
+
+try {
+    hashedPassword = PassHasher.hashPassword(Passreg.getText()); // Hash password
+    System.out.println("Hashed Password: " + hashedPassword);  // Debugging
+} catch (NoSuchAlgorithmException ex) {
+    ex.printStackTrace();
+    JOptionPane.showMessageDialog(this, "Password hashing error.", "Error", JOptionPane.ERROR_MESSAGE);
+    return; 
+}
+
+
+            
 
             String checkQuery = "SELECT COUNT(*) FROM users WHERE us = ? OR em = ?";
             try (PreparedStatement checkStmt = connect.prepareStatement(checkQuery)) {
@@ -269,7 +288,7 @@ public class RegistrationForm extends javax.swing.JFrame {
                     return;
                 }
             }
-
+        
             String insertQuery = "INSERT INTO users (fn, ln, cn, em, us, ps, type, status) VALUES (?, ?, ?, ?, ?, ?, ?, 'Pending')";
             try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
                 insertStmt.setString(1, fname);
@@ -277,7 +296,7 @@ public class RegistrationForm extends javax.swing.JFrame {
                 insertStmt.setString(3, cn);
                 insertStmt.setString(4, email);
                 insertStmt.setString(5, username);
-                insertStmt.setString(6, password);
+                insertStmt.setString(6, hashedPassword);
                 insertStmt.setString(7, type);
 
                 int inserted = insertStmt.executeUpdate();
@@ -289,8 +308,8 @@ public class RegistrationForm extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Registration failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }
-
+           
+                }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }

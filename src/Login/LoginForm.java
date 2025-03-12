@@ -5,8 +5,11 @@
  */
 package Login;
 
+
 import config.DbConnect;
+import config.PassHasher;
 import config.Session;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -155,69 +158,71 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_userActionPerformed
 
     private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
-        String usernameInput = user.getText().trim();
-        String passwordInput = new String(pass.getPassword()).trim();
+      
+      String usernameInput = user.getText().trim();
+      String passwordInput = new String(pass.getPassword()).trim();
 
-        if (usernameInput.isEmpty() || passwordInput.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Username and Password cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+      if (usernameInput.isEmpty() || passwordInput.isEmpty()) {
+      JOptionPane.showMessageDialog(this, "Username and Password cannot be empty!", "Error", JOptionPane.ERROR_MESSAGE);
+      return;
+}
+
+      String sql = "SELECT u_id, fn, ln, em, us, ps, status, type FROM users WHERE us = ?";
+
+     try (Connection connect = new DbConnect().getConnection();
+     PreparedStatement pst = connect.prepareStatement(sql)) {
+
+    pst.setString(1, usernameInput);
+    ResultSet rs = pst.executeQuery();
+
+    if (rs.next()) {
+        String dbPasswordHash = rs.getString("ps"); // Get stored hashed password
+        String status = rs.getString("status");
+        String userType = rs.getString("type");
+
+        if (status.equalsIgnoreCase("Pending")) {
+            JOptionPane.showMessageDialog(this, "Your account is pending approval. Please wait for admin approval.", "Access Denied", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-     String sql = "SELECT u_id, fn, ln, em, us, ps, status, type FROM users WHERE us = ?";
+        
+        if (PassHasher.verifyPassword(passwordInput, dbPasswordHash)) {  
+        
+            Session sess = Session.getInstance();
+            sess.setUid(rs.getInt("u_id"));
+            sess.setFname(rs.getString("fn"));
+            sess.setLname(rs.getString("ln"));
+            sess.setEmail(rs.getString("em"));
+            sess.setUsername(rs.getString("us"));
+            sess.setType(rs.getString("type"));
+            sess.setStatus(rs.getString("status"));
 
-        try (Connection connect = new DbConnect().getConnection();
-            PreparedStatement pst = connect.prepareStatement(sql)) {
+            JOptionPane.showMessageDialog(this, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-            pst.setString(1, usernameInput);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                String dbPassword = rs.getString("ps");
-                String status = rs.getString("status");
-                String userType = rs.getString("type");
-
-                if (status.equalsIgnoreCase("Pending")) {
-                    JOptionPane.showMessageDialog(this, "Your account is pending approval. Please wait for admin approval.", "Access Denied", JOptionPane.ERROR_MESSAGE);
+    
+            switch (userType.toLowerCase()) {
+                case "admin":
+                    new Admin.AdminDashboard().setVisible(true);
+                    break;
+                case "user":
+                    new User.DecisionRecord().setVisible(true);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Invalid User Type!", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
-
-                if (passwordInput.equals(dbPassword)) {
-                     
-                    Session sess = Session.getInstance();
-                    sess.setUid(rs.getInt("u_id"));
-                    sess.setFname(rs.getString("fn"));
-                    sess.setLname(rs.getString("ln"));
-                    sess.setEmail(rs.getString("em"));
-                    sess.setUsername(rs.getString("us"));
-                    sess.setType(rs.getString("type"));
-                    sess.setStatus(rs.getString("status"));
-                  
-                    
-                    
-                    JOptionPane.showMessageDialog(this, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-                    switch (userType.toLowerCase()) {
-                        case "admin":
-                        new Admin.AdminDashboard().setVisible(true);
-                        break;
-                        case "user":
-                        new User.DecisionRecord().setVisible(true);
-                        break;
-                        default:
-                        JOptionPane.showMessageDialog(this, "Invalid User Type!", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "Invalid Username or Password!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+} catch (SQLException ex) {
+    JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+}
+
     }//GEN-LAST:event_LbuttonActionPerformed
 
     private void RbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbuttonActionPerformed

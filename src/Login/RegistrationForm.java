@@ -115,16 +115,20 @@ public class RegistrationForm extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 370, 90, 30));
 
+        jButton2.setBackground(new java.awt.Color(0, 153, 153));
         jButton2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 102, 102));
         jButton2.setText("BACK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 90, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 100, 30));
 
+        jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 102, 102));
         jButton1.setText("REGISTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,16 +267,17 @@ public class RegistrationForm extends javax.swing.JFrame {
 
         try (Connection connect = new DbConnect().getConnection()) {
             
-       String hashedPassword = ""; // Declare variable outside to make it accessible
+       String hashedPassword = ""; 
 
-try {
-    hashedPassword = PassHasher.hashPassword(Passreg.getText()); // Hash password
-    System.out.println("Hashed Password: " + hashedPassword);  // Debugging
-} catch (NoSuchAlgorithmException ex) {
+        try {
+          hashedPassword = PassHasher.hashPassword(Passreg.getText()); 
+    System.out.println("Hashed Password: " + hashedPassword);  
+    } catch (NoSuchAlgorithmException ex) {
     ex.printStackTrace();
+   
     JOptionPane.showMessageDialog(this, "Password hashing error.", "Error", JOptionPane.ERROR_MESSAGE);
     return; 
-}
+    }
 
 
             

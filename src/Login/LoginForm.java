@@ -94,8 +94,9 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel3.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 260, 30));
 
-        Lbutton.setBackground(new java.awt.Color(255, 255, 255));
+        Lbutton.setBackground(new java.awt.Color(0, 153, 153));
         Lbutton.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
+        Lbutton.setForeground(new java.awt.Color(0, 102, 102));
         Lbutton.setText("LOGIN");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +105,9 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel3.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 300, 110, 30));
 
-        Rbutton.setBackground(new java.awt.Color(255, 255, 255));
+        Rbutton.setBackground(new java.awt.Color(0, 153, 153));
         Rbutton.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
+        Rbutton.setForeground(new java.awt.Color(0, 102, 102));
         Rbutton.setText("REGISTER");
         Rbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

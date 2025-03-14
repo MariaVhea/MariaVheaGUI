@@ -109,7 +109,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         acc_lname.setForeground(new java.awt.Color(255, 255, 255));
         acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lname.setText("ADMIN");
-        jPanel4.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 160, 160, 30));
+        jPanel4.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 30));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 440));
 

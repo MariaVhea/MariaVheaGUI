@@ -39,8 +39,6 @@ public class accountDetails extends javax.swing.JFrame {
         ln = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         em = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        utype = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         us = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -60,7 +58,7 @@ public class accountDetails extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("ACCOUNT INFORMATION");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 360, 40));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 360, 40));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/dfdaec60bb19479993e7978e3f299d03__2_-removebg-preview.png"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 40));
@@ -80,26 +78,26 @@ public class accountDetails extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 130, 130));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 130));
 
         acc_ln.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         acc_ln.setForeground(new java.awt.Color(255, 255, 255));
         acc_ln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_ln.setText("USER");
-        jPanel2.add(acc_ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 170, 30));
+        jPanel2.add(acc_ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 180, 180, 30));
 
         acc_fn.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         acc_fn.setForeground(new java.awt.Color(255, 255, 255));
         acc_fn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fn.setText("USER");
-        jPanel2.add(acc_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 170, 30));
+        jPanel2.add(acc_fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 160, 180, 30));
 
         idDisplay.setBackground(new java.awt.Color(0, 102, 102));
         idDisplay.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         idDisplay.setForeground(new java.awt.Color(255, 255, 255));
         idDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idDisplay.setText("(UID)");
-        jPanel2.add(idDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
+        jPanel2.add(idDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 180, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 170, 460));
 
@@ -111,58 +109,45 @@ public class accountDetails extends javax.swing.JFrame {
                 fnActionPerformed(evt);
             }
         });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 180, 30));
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 180, 30));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel7.setText("First Name:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 90, 30));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 90, 30));
 
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel8.setText("Last Name:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 90, 30));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 90, 30));
 
         ln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnActionPerformed(evt);
             }
         });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 180, 30));
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 180, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel9.setText("Email:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 90, 30));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 90, 30));
 
         em.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emActionPerformed(evt);
             }
         });
-        jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 180, 30));
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel3.setText("Type:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 90, 30));
-
-        utype.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        utype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
-        utype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                utypeActionPerformed(evt);
-            }
-        });
-        jPanel3.add(utype, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 180, 30));
+        jPanel3.add(em, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 180, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel4.setText("Username:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 90, 30));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 90, 30));
 
         us.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usActionPerformed(evt);
             }
         });
-        jPanel3.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 180, 30));
+        jPanel3.add(us, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 180, 30));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 3, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,7 +158,7 @@ public class accountDetails extends javax.swing.JFrame {
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 180, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 180, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 700, 460));
 
@@ -192,10 +177,6 @@ public class accountDetails extends javax.swing.JFrame {
     private void emActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emActionPerformed
-
-    private void utypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utypeActionPerformed
-        String[] userTypes = {"admin", "user"};
-    }//GEN-LAST:event_utypeActionPerformed
 
     private void usActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usActionPerformed
         // TODO add your handling code here:
@@ -216,7 +197,6 @@ public class accountDetails extends javax.swing.JFrame {
         fn.setText(""+sess.getFname());
         ln.setText(""+sess.getLname());
         em.setText(""+sess.getEmail());
-        utype.setSelectedItem(sess.getType());
         us.setText(""+sess.getUsername());
         }
     }//GEN-LAST:event_formWindowActivated
@@ -277,7 +257,6 @@ public class accountDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -289,6 +268,5 @@ public class accountDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField ln;
     private javax.swing.JTextField us;
-    private javax.swing.JComboBox<String> utype;
     // End of variables declaration//GEN-END:variables
 }

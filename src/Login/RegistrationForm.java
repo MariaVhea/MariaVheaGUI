@@ -59,6 +59,7 @@ public class RegistrationForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        pass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +186,15 @@ public class RegistrationForm extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 90, 460, 350));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 520));
+
+        pass.setBackground(new java.awt.Color(0, 153, 153));
+        pass.setForeground(new java.awt.Color(153, 0, 0));
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 370, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -338,6 +348,14 @@ public class RegistrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FnameActionPerformed
 
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+        if (pass.isSelected()) {
+            Passreg.setEchoChar((char) 0);
+        } else {
+            Passreg.setEchoChar('*');
+        }
+    }//GEN-LAST:event_passActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -394,6 +412,7 @@ public class RegistrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JCheckBox pass;
     private javax.swing.JTextField userReg;
     // End of variables declaration//GEN-END:variables
 }

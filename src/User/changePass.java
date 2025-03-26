@@ -59,7 +59,7 @@ public class changePass extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("CHANGE PASSWORD");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 360, 40));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 300, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 60));
 
@@ -67,26 +67,26 @@ public class changePass extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 130, 130));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 130, 130));
 
         acc_lnln.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         acc_lnln.setForeground(new java.awt.Color(255, 255, 255));
         acc_lnln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_lnln.setText("USER");
-        jPanel2.add(acc_lnln, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 170, 30));
+        jPanel2.add(acc_lnln, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 170, 30));
 
         acc_fnfn.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         acc_fnfn.setForeground(new java.awt.Color(255, 255, 255));
         acc_fnfn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_fnfn.setText("USER");
-        jPanel2.add(acc_fnfn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 170, 30));
+        jPanel2.add(acc_fnfn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 170, 30));
 
         idDisplay.setBackground(new java.awt.Color(0, 102, 102));
         idDisplay.setFont(new java.awt.Font("Arial Black", 2, 14)); // NOI18N
         idDisplay.setForeground(new java.awt.Color(255, 255, 255));
         idDisplay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idDisplay.setText("(UID)");
-        jPanel2.add(idDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
+        jPanel2.add(idDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 180, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 170, 460));
 
@@ -159,7 +159,7 @@ public class changePass extends javax.swing.JFrame {
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 80, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 700, 460));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 710, 460));
 
         pack();
         setLocationRelativeTo(null);
@@ -188,7 +188,7 @@ public class changePass extends javax.swing.JFrame {
       
         acc_fnfn.setText(""+sess.getFname());
         acc_lnln.setText(""+sess.getLname());
-        idDisplay.setText("USER ID:"+sess.getUid());
+        idDisplay.setText("USER ID: "+sess.getUid());
         
        
         }

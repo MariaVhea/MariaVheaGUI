@@ -133,17 +133,19 @@ public class UserDashboard extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 143));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 10, 130, 143));
 
         acc_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         acc_id.setForeground(new java.awt.Color(255, 255, 255));
+        acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         acc_id.setText("ID");
-        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 391, 26, 28));
+        jPanel3.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 391, 210, 28));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Current User");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 357, -1, 28));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 357, 210, 28));
 
         p_add.setBackground(new java.awt.Color(0, 102, 102));
         p_add.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,8 +164,9 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("ADD");
-        p_add.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 0, 60, 40));
+        p_add.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, 0, 220, 40));
 
         jPanel3.add(p_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 210, 40));
 
@@ -184,8 +187,9 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("EDIT");
-        edit.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 0, 60, 40));
+        edit.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 0, 210, 40));
 
         jPanel3.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 210, -1));
 

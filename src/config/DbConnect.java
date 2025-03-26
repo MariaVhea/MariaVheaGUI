@@ -70,4 +70,18 @@ public class DbConnect {
             }
         
         }
+
+       public void insertLog(int userId, String action) {
+    String query = "INSERT INTO logs (user_id, action) VALUES (?, ?)";
+    try (PreparedStatement pstmt = connect.prepareStatement(query)) {
+        pstmt.setInt(1, userId);
+        pstmt.setString(2, action);
+        pstmt.executeUpdate();
+        System.out.println("Log inserted: " + action);
+    } catch (SQLException ex) {
+        System.out.println("Error inserting log: " + ex.getMessage());
+    }
 }
+}
+
+

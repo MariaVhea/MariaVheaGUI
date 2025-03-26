@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import Login.LoginForm;
-
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
 /**
  *
  * @author HP
@@ -369,6 +371,7 @@ try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
 
                 if (inserted > 0) {
                     JOptionPane.showMessageDialog(this, "Registration Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                     insertLog(username, "Added a new user: " + username);
                     new UserDashboard().setVisible(true);
                     this.dispose();
                 } else {
@@ -380,6 +383,18 @@ try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
             JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_addActionPerformed
+private void insertLog(String username, String action) {
+    try (Connection connect = new DbConnect().getConnection()) {
+        String logQuery = "INSERT INTO logs (user_id, action, timestamp) VALUES ((SELECT id FROM users WHERE us = ?), ?, NOW())";
+        try (PreparedStatement logStmt = connect.prepareStatement(logQuery)) {
+            logStmt.setString(1, username);
+            logStmt.setString(2, action);
+            logStmt.executeUpdate();
+        }
+    } catch (SQLException ex) {
+        System.out.println("Log Error: " + ex.getMessage());
+    }
+}
 
     private void ustatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ustatusActionPerformed
         // TODO add your handling code here:
@@ -394,8 +409,32 @@ try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
     }//GEN-LAST:event_NumberActionPerformed
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-        // TODO add your handling code here:
+    
+        if (!uid.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Please delete the user first before refreshing!", "Error", 
+    JOptionPane.ERROR_MESSAGE);
+    uid.setText(""); // Clear UID before returning
+    return; 
+}
+
+    loadUserTable();
+    
+    Fname.setText("");
+    Lname.setText("");
+    userReg.setText("");
+    Email.setText("");
+    Passreg.setText("");
+    Number.setText("");
+    uid.setText("");
+    jComboBox1.setSelectedIndex(0); 
+    ustatus.setSelectedIndex(0);
+
+    JOptionPane.showMessageDialog(this, "User list refreshed and fields cleared!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_refreshActionPerformed
+    
+    private void loadUserTable() {
+  
+}
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
 
@@ -472,6 +511,7 @@ try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
         int rowsAffected = pst.executeUpdate();
         if (rowsAffected > 0) {
             JOptionPane.showMessageDialog(this, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            insertLog(username, "Updated user details: " + username);
         } else {
             JOptionPane.showMessageDialog(this, "Update failed. User not found.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -485,11 +525,68 @@ try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
-        // TODO add your handling code here:
+    
+    String userIdStr = uid.getText().trim(); 
+    if (userIdStr.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "No user selected to delete!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    int userId = Integer.parseInt(userIdStr); 
+
+    int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", 
+                                                "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+    
+    if (confirm == JOptionPane.YES_OPTION) {
+        try (Connection connect = new DbConnect().getConnection()) {
+            
+            // Get the username before deleting
+            String getUserQuery = "SELECT us FROM users WHERE u_id = ?";
+            try (PreparedStatement getUserStmt = connect.prepareStatement(getUserQuery)) {
+                getUserStmt.setInt(1, userId);
+                ResultSet rs = getUserStmt.executeQuery();
+
+                if (rs.next()) {
+                    String username = rs.getString("us"); 
+
+                    // Now delete the user
+                    String deleteQuery = "DELETE FROM users WHERE u_id = ?";
+                    try (PreparedStatement deleteStmt = connect.prepareStatement(deleteQuery)) {
+                        deleteStmt.setInt(1, userId);
+                        int rowsAffected = deleteStmt.executeUpdate();
+
+                        if (rowsAffected > 0) {
+                            JOptionPane.showMessageDialog(this, "User deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            
+                            // Insert log after successful deletion
+                            insertLog(username, "Deleted user: " + username);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Failed to delete user.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "User not found!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     }//GEN-LAST:event_deleteActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
-        // TODO add your handling code here:
+         Fname.setText("");
+    Lname.setText("");
+    userReg.setText("");
+    Email.setText("");
+    Passreg.setText("");
+    Number.setText("");
+    uid.setText("");
+    jComboBox1.setSelectedIndex(0); 
+    ustatus.setSelectedIndex(0);
+
+    JOptionPane.showMessageDialog(this, "Fields cleared!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_clearActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed

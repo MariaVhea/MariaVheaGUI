@@ -6,6 +6,7 @@
 package User;
 
 import Login.LoginForm;
+import config.DbConnect;
 import config.Session;
 import javax.swing.JOptionPane;
 
@@ -142,9 +143,15 @@ public class DecisionRecord extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
-        LoginForm login = new LoginForm();
-        login.setVisible(true);
-        this.dispose();
+    
+    Session sess = Session.getInstance();
+    DbConnect dbc = new DbConnect();
+    dbc.insertLog(sess.getUid(), "Logged out from the system");
+
+    LoginForm login = new LoginForm();
+    login.setVisible(true);
+    this.dispose();
+    
     }//GEN-LAST:event_LbuttonActionPerformed
 
     /**

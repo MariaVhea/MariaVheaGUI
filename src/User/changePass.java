@@ -208,6 +208,12 @@ public class changePass extends javax.swing.JFrame {
 
         String oldhash = PassHasher.hashPassword(oldpass.getText());
         if (olddbpass.equals(oldhash)) {
+            
+            if (newpass.getText().equals(oldpass.getText())) {
+                JOptionPane.showMessageDialog(null, "New password cannot be the same as the old password!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;  
+                
+            }
 
             
             if (!newpass.getText().equals(conpass.getText())) {

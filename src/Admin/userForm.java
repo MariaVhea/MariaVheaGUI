@@ -38,7 +38,6 @@ public class userForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         clear = new javax.swing.JButton();
-        refresh = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         add = new javax.swing.JButton();
         update = new javax.swing.JButton();
@@ -79,17 +78,6 @@ public class userForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 110, 30));
-
-        refresh.setBackground(new java.awt.Color(255, 255, 255));
-        refresh.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        refresh.setForeground(new java.awt.Color(0, 153, 153));
-        refresh.setText("REFRESH");
-        refresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshActionPerformed(evt);
-            }
-        });
-        jPanel1.add(refresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 410, 120, 30));
 
         cancel.setBackground(new java.awt.Color(255, 255, 255));
         cancel.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -177,6 +165,7 @@ public class userForm extends javax.swing.JFrame {
         });
         jPanel3.add(Passreg, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, 180, 30));
 
+        uid.setEditable(false);
         uid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 uidActionPerformed(evt);
@@ -294,30 +283,6 @@ public class userForm extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Fields cleared!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_clearActionPerformed
-
-    private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
-
-        if (!uid.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please delete the user first before refreshing!", "Error",
-                JOptionPane.ERROR_MESSAGE);
-            uid.setText(""); // Clear UID before returning
-            return;
-        }
-
-        loadUserTable();
-
-        Fname.setText("");
-        Lname.setText("");
-        userReg.setText("");
-        Email.setText("");
-        Passreg.setText("");
-        Number.setText("");
-        uid.setText("");
-        jComboBox1.setSelectedIndex(0);
-        ustatus.setSelectedIndex(0);
-
-        JOptionPane.showMessageDialog(this, "User list refreshed and fields cleared!", "Success", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_refreshActionPerformed
     private void loadUserTable() {
     }
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
@@ -650,7 +615,6 @@ private void insertLog(String username, String action) {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton refresh;
     public javax.swing.JTextField uid;
     public javax.swing.JButton update;
     public javax.swing.JTextField userReg;

@@ -117,7 +117,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 440));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("USERS");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,7 +145,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel6.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("LOGS");
         jPanel6.add(jLabel6);

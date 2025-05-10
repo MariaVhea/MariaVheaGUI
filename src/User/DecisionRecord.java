@@ -33,7 +33,6 @@ public class DecisionRecord extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         u_lname = new javax.swing.JLabel();
@@ -55,32 +54,25 @@ public class DecisionRecord extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setForeground(new java.awt.Color(0, 102, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setBackground(new java.awt.Color(0, 102, 102));
-        jLabel5.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("WELCOME!");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 50));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 40));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 130, 130));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 130, 130));
 
         u_lname.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         u_lname.setForeground(new java.awt.Color(255, 255, 255));
         u_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         u_lname.setText("USER");
-        jPanel2.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 170, 20));
+        jPanel2.add(u_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 20));
 
         u_fname.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         u_fname.setForeground(new java.awt.Color(255, 255, 255));
         u_fname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         u_fname.setText("USER");
-        jPanel2.add(u_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 20));
+        jPanel2.add(u_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 170, 20));
 
         Lbutton.setBackground(new java.awt.Color(0, 153, 153));
         Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -91,9 +83,9 @@ public class DecisionRecord extends javax.swing.JFrame {
                 LbuttonActionPerformed(evt);
             }
         });
-        jPanel2.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 110, 40));
+        jPanel2.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 110, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 170, 480));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 170, 500));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -116,7 +108,7 @@ public class DecisionRecord extends javax.swing.JFrame {
         jPanel4.setLayout(null);
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 150, 180));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 740, 460));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 740, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -194,7 +186,6 @@ public class DecisionRecord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

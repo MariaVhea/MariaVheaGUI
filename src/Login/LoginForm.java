@@ -85,7 +85,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LOGIN ");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 430, 60));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 360, 60));
 
         user.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         user.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel4.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 110, 30));
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setForeground(new java.awt.Color(153, 0, 0));
+        jCheckBox1.setForeground(new java.awt.Color(0, 102, 102));
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);

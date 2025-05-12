@@ -78,9 +78,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
 
-        Lbutton.setBackground(new java.awt.Color(0, 153, 153));
+        Lbutton.setBackground(new java.awt.Color(0, 102, 102));
         Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Lbutton.setForeground(new java.awt.Color(0, 102, 102));
         Lbutton.setText("LOGOUT");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

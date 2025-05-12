@@ -118,7 +118,7 @@ public class UserDashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 17, 630, 480));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 17, 650, 480));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,7 +195,7 @@ public class UserDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +254,6 @@ public class UserDashboard extends javax.swing.JFrame {
                 uf.Fname.setText(""+rs.getString("fn"));
                 uf.Lname.setText(""+rs.getString("ln"));
                 uf.Email.setText(""+rs.getString("em"));
-                uf.Lname.setText(""+rs.getString("ln"));
                 uf.Number.setText(""+rs.getString("cn"));
                 uf.userReg.setText(""+rs.getString("us"));
                 uf.Passreg.setText(""+rs.getString("ps"));

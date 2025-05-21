@@ -12,10 +12,22 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import Login.LoginForm;
 import config.PassHasher;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.NoSuchAlgorithmException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 /**
  *
  * @author HP
@@ -28,7 +40,85 @@ public class userForm extends javax.swing.JFrame {
     public userForm() {
         initComponents();
     }
+ public String destination;
+   File selectedFile;
+   public String oldpath;
+   public String path;
+   
+    
 
+
+
+public int FileExistenceChecker(String path){
+        File file = new File(path);
+        String fileName = file.getName();
+        
+        Path filePath = Paths.get("src/Images", fileName);
+        boolean fileExists = Files.exists(filePath);
+        
+        if (fileExists) {
+            return 1;
+        } else {
+            return 0;
+        }
+    
+    }
+public void imageUpdater(String existingFilePath, String newFilePath){
+        File existingFile = new File(existingFilePath);
+        if (existingFile.exists()) {
+            String parentDirectory = existingFile.getParent();
+            File newFile = new File(newFilePath);
+            String newFileName = newFile.getName();
+            File updatedFile = new File(parentDirectory, newFileName);
+            existingFile.delete();
+            try {
+                Files.copy(newFile.toPath(), updatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Image updated successfully.");
+            } catch (IOException e) {
+                System.out.println("Error occurred while updating the image: "+e);
+            }
+        } else {
+            try{
+                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            }catch(IOException e){
+                System.out.println("Error on update!");
+            }
+        }
+   }
+public ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = (ImagePath != null) ? new ImageIcon(ImagePath) : new ImageIcon(pic);
+
+    int labelWidth = label.getWidth();
+    if (labelWidth == 0) labelWidth = 150; // fallback width if not initialized
+
+    int newHeight = getHeightFromWidth(ImagePath, labelWidth);
+    if (newHeight <= 0) newHeight = 150; // fallback height
+
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(labelWidth, newHeight, Image.SCALE_SMOOTH);
+    return new ImageIcon(newImg);
+}
+
+public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+        try {
+            
+            File imageFile = new File(imagePath);
+            BufferedImage image = ImageIO.read(imageFile);
+            
+           
+            int originalWidth = image.getWidth();
+            int originalHeight = image.getHeight();
+            
+            
+            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
+            
+            return newHeight;
+        } catch (IOException ex) {
+            System.out.println("No image found!"+ex);
+        }
+        
+        return -1;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,8 +156,9 @@ public class userForm extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
+        remove = new javax.swing.JButton();
+        select = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -299,29 +390,34 @@ public class userForm extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 170, Short.MAX_VALUE)
+            .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addComponent(image, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 170, 160));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jButton1.setText("REMOVE");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
-
-        jButton2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton2.setForeground(new java.awt.Color(51, 51, 51));
-        jButton2.setText("SELECT");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        remove.setBackground(new java.awt.Color(0, 102, 102));
+        remove.setForeground(new java.awt.Color(51, 51, 51));
+        remove.setText("REMOVE");
+        remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                removeActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
+        jPanel1.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
+
+        select.setBackground(new java.awt.Color(0, 102, 102));
+        select.setForeground(new java.awt.Color(51, 51, 51));
+        select.setText("SELECT");
+        select.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectActionPerformed(evt);
+            }
+        });
+        jPanel1.add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -423,99 +519,107 @@ public class userForm extends javax.swing.JFrame {
     private void loadUserTable() {
     }
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        String fname = Fname.getText().trim();
-        String lname = Lname.getText().trim();
-        String username = userReg.getText().trim();
-        String email = Email.getText().trim();
-        String password = Passreg.getText().trim();
-        String cn = Number.getText().trim();
-        String accountType = jComboBox1.getSelectedItem().toString();
-        String userStatus = ustatus.getSelectedItem().toString();
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+         String fname = Fname.getText().trim();
+    String lname = Lname.getText().trim();
+    String username = userReg.getText().trim();
+    String email = Email.getText().trim();
+    String password = Passreg.getText().trim();
+    String cn = Number.getText().trim();
+    String accountType = jComboBox1.getSelectedItem().toString();
+    String userStatus = ustatus.getSelectedItem().toString();
+    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
-        if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "All fields are required. Please fill out the form.", "Error", JOptionPane.ERROR_MESSAGE);
+    // Basic validation
+    if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() || username.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "All fields are required. Please fill out the form.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!fname.matches("[a-zA-Z ]+") || !lname.matches("[a-zA-Z ]+")) {
+        JOptionPane.showMessageDialog(this, "Only letters are allowed for First and Last Name.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!email.matches(emailRegex)) {
+        JOptionPane.showMessageDialog(this, "Invalid Email! Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!username.matches("[a-zA-Z0-9_]{5,}")) {
+        JOptionPane.showMessageDialog(this, "Invalid Username! Must be at least 5 characters and contain only letters, numbers, and underscores.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
+        JOptionPane.showMessageDialog(this, "Invalid Password! Must be at least 8 characters long, contain one uppercase letter, one special character, and one number.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Check if image is selected
+    if (selectedFile == null) {
+        JOptionPane.showMessageDialog(this, "Please select an image for the user.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Set image destination path
+    destination = "src/Images" + selectedFile.getName();
+
+    try (Connection connect = new DbConnect().getConnection()) {
+
+        // Hash password
+        String hashedPassword = "";
+        try {
+            hashedPassword = PassHasher.hashPassword(password);
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Password hashing error.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (!fname.matches("[a-zA-Z ]+") || !lname.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(this, "Only letters are allowed for First and Last Name.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        // Check for duplicates (username or email)
+        String checkQuery = "SELECT COUNT(*) FROM users WHERE us = ? OR em = ?";
+        try (PreparedStatement checkStmt = connect.prepareStatement(checkQuery)) {
+            checkStmt.setString(1, username);
+            checkStmt.setString(2, email);
+            ResultSet rs = checkStmt.executeQuery();
 
-        if (!email.matches(emailRegex)) {
-            JOptionPane.showMessageDialog(this, "Invalid Email! Please enter a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!username.matches("[a-zA-Z0-9_]{5,}")) {
-            JOptionPane.showMessageDialog(this, "Invalid Username! Must be at least 5 characters and contain only letters, numbers, and underscores.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
-            JOptionPane.showMessageDialog(this, "Invalid Password! Must be at least 8 characters long, contain one uppercase letter, one special character, and one number.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        System.out.println("Debug: Validation passed, checking for duplicates...");
-
-       
-
-            try (Connection connect = new DbConnect().getConnection()) {
-
-            String hashedPassword = "";
-
-            try {
-                hashedPassword = PassHasher.hashPassword(Passreg.getText());
-                System.out.println("Hashed Password: " + hashedPassword);
-            } catch (NoSuchAlgorithmException ex) {
-                ex.printStackTrace();
-
-                JOptionPane.showMessageDialog(this, "Password hashing error.", "Error", JOptionPane.ERROR_MESSAGE);
+            if (rs.next() && rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(this, "Username or Email already exists. Please choose another.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
-            
-            
-            String checkQuery = "SELECT COUNT(*) FROM users WHERE us = ? OR em = ?";
-            try (PreparedStatement checkStmt = connect.prepareStatement(checkQuery)) {
-                checkStmt.setString(1, username);
-                checkStmt.setString(2, email);
-                ResultSet rs = checkStmt.executeQuery();
-
-                if (rs.next() && rs.getInt(1) > 0) {
-                    JOptionPane.showMessageDialog(this, "Username or Email already exists. Please choose another.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-            }
-
-            String insertQuery = "INSERT INTO users (fn, ln, cn, em, us, ps, type, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
-                insertStmt.setString(1, fname);
-                insertStmt.setString(2, lname);
-                insertStmt.setString(3, cn);
-                insertStmt.setString(4, email);
-                insertStmt.setString(5, username);
-                insertStmt.setString(6, hashedPassword);
-                insertStmt.setString(7, accountType);
-                insertStmt.setString(8, userStatus);
-
-                int inserted = insertStmt.executeUpdate();
-
-                if (inserted > 0) {
-                    JOptionPane.showMessageDialog(this, "Registration Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    insertLog(username, "Added a new user: " + username);
-                    new UserDashboard().setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Registration failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        // Insert user with image path
+        String insertQuery = "INSERT INTO users (fn, ln, cn, em, us, ps, type, status, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement insertStmt = connect.prepareStatement(insertQuery)) {
+            insertStmt.setString(1, fname);
+            insertStmt.setString(2, lname);
+            insertStmt.setString(3, cn);
+            insertStmt.setString(4, email);
+            insertStmt.setString(5, username);
+            insertStmt.setString(6, hashedPassword);
+            insertStmt.setString(7, accountType);
+            insertStmt.setString(8, userStatus);
+            insertStmt.setString(9, destination);
+
+            int inserted = insertStmt.executeUpdate();
+
+            if (inserted > 0) {
+                // Copy the selected image file to destination folder
+                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                JOptionPane.showMessageDialog(this, "Registration Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                new UserDashboard().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Registration failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    } catch (SQLException | IOException ex) {
+        JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
     }//GEN-LAST:event_addActionPerformed
 private void insertLog(String username, String action) {
     try (Connection connect = new DbConnect().getConnection()) {
@@ -530,104 +634,115 @@ private void insertLog(String username, String action) {
     }
 }
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+  String fname = Fname.getText().trim();
+    String lname = Lname.getText().trim();
+    String username = userReg.getText().trim();
+    String email = Email.getText().trim();
+    String password = Passreg.getText().trim();
+    String cn = Number.getText().trim();
+    String accountType = jComboBox1.getSelectedItem().toString();
+    String userStatus = ustatus.getSelectedItem().toString();
+    String userId = uid.getText().trim();
 
-        String fname = Fname.getText().trim();
-        String lname = Lname.getText().trim();
-        String username = userReg.getText().trim();
-        String email = Email.getText().trim();
-        String password = Passreg.getText().trim();
-        String cn = Number.getText().trim();
-        String accountType = jComboBox1.getSelectedItem().toString();
-        String userStatus = ustatus.getSelectedItem().toString();
-        String userId = uid.getText().trim();
+    if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() ||
+        username.isEmpty() || password.isEmpty() || userId.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "All fields are required.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        if (fname.isEmpty() || lname.isEmpty() || cn.isEmpty() || email.isEmpty() ||
-            username.isEmpty() || password.isEmpty() || userId.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "All fields are required.", "Error", JOptionPane.ERROR_MESSAGE);
+    if (!fname.matches("[a-zA-Z ]+") || !lname.matches("[a-zA-Z ]+")) {
+        JOptionPane.showMessageDialog(this, "Only letters are allowed for First and Last Name.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    if (!email.matches(emailRegex)) {
+        JOptionPane.showMessageDialog(this, "Invalid Email!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!username.matches("[a-zA-Z0-9_]{5,}")) {
+        JOptionPane.showMessageDialog(this, "Username must be at least 5 characters long and contain only letters, numbers, and underscores.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    if (!password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
+        JOptionPane.showMessageDialog(this, "Password must be at least 8 characters, contain one uppercase letter, one special character, and one number.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try (Connection connect = new DbConnect().getConnection()) {
+
+        // Hash password
+        String hashedPassword = "";
+        try {
+            hashedPassword = PassHasher.hashPassword(password);
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Password hashing error.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if (!fname.matches("[a-zA-Z ]+") || !lname.matches("[a-zA-Z ]+")) {
-            JOptionPane.showMessageDialog(this, "Only letters are allowed for First and Last Name.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+        // Check for duplicate email or username (excluding current user)
+        String checkSql = "SELECT COUNT(*) FROM users WHERE (em = ? OR us = ?) AND u_id != ?";
+        try (PreparedStatement checkStmt = connect.prepareStatement(checkSql)) {
+            checkStmt.setString(1, email);
+            checkStmt.setString(2, username);
+            checkStmt.setString(3, userId);
 
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        if (!email.matches(emailRegex)) {
-            JOptionPane.showMessageDialog(this, "Invalid Email!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!username.matches("[a-zA-Z0-9_]{5,}")) {
-            JOptionPane.showMessageDialog(this, "Username must be at least 5 characters long and contain only letters, numbers, and underscores.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!password.matches("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])(?=.*\\d).{8,}$")) {
-            JOptionPane.showMessageDialog(this, "Password must be at least 8 characters, contain one uppercase letter, one special character, and one number.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        System.out.println("Debug: Validation passed, checking for existing email and username...");
-
-      
-
-             try (Connection connect = new DbConnect().getConnection()) {
-
-            String hashedPassword = "";
-
-            try {
-                hashedPassword = PassHasher.hashPassword(Passreg.getText());
-                System.out.println("Hashed Password: " + hashedPassword);
-            } catch (NoSuchAlgorithmException ex) {
-                ex.printStackTrace();
-
-                JOptionPane.showMessageDialog(this, "Password hashing error.", "Error", JOptionPane.ERROR_MESSAGE);
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                JOptionPane.showMessageDialog(this, "Email or Username is already in use by another user!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
-            
-            String checkSql = "SELECT COUNT(*) FROM users WHERE (em = ? OR us = ?) AND u_id != ?";
-            try (PreparedStatement checkStmt = connect.prepareStatement(checkSql)) {
-                checkStmt.setString(1, email);
-                checkStmt.setString(2, username);
-                checkStmt.setString(3, userId);
-
-                ResultSet rs = checkStmt.executeQuery();
-                if (rs.next() && rs.getInt(1) > 0) {
-                    JOptionPane.showMessageDialog(this, "Email or Username is already in use by another user!", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
+        }
+        
+        String imagePath = null;
+        if (selectedFile != null) {
+            imagePath = "src/Images" + selectedFile.getName();
+        } else {
+          
+            String imgSql = "SELECT image FROM users WHERE u_id = ?";
+            try (PreparedStatement imgStmt = connect.prepareStatement(imgSql)) {
+                imgStmt.setString(1, userId);
+                ResultSet rs = imgStmt.executeQuery();
+                if (rs.next()) {
+                    imagePath = rs.getString("image");
                 }
             }
-
-            System.out.println("Debug: No duplicate email or username found, updating user data...");
-
-            // Proceed with update
-            String sql = "UPDATE users SET fn = ?, ln = ?, cn = ?, em = ?, us = ?, ps = ?, type = ?, status = ? WHERE u_id = ?";
-            try (PreparedStatement pst = connect.prepareStatement(sql)) {
-                pst.setString(1, fname);
-                pst.setString(2, lname);
-                pst.setString(3, cn);
-                pst.setString(4, email);
-                pst.setString(5, username);
-                pst.setString(6, hashedPassword);
-                pst.setString(7, accountType);
-                pst.setString(8, userStatus);
-                pst.setString(9, userId);
-
-                int rowsAffected = pst.executeUpdate();
-                if (rowsAffected > 0) {
-                    JOptionPane.showMessageDialog(this, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    insertLog(username, "Updated user details: " + username);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Update failed. User not found.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+   
+        String sql = "UPDATE users SET fn = ?, ln = ?, cn = ?, em = ?, us = ?, ps = ?, type = ?, status = ?, image = ? WHERE u_id = ?";
+        try (PreparedStatement pst = connect.prepareStatement(sql)) {
+            pst.setString(1, fname);
+            pst.setString(2, lname);
+            pst.setString(3, cn);
+            pst.setString(4, email);
+            pst.setString(5, username);
+            pst.setString(6, hashedPassword);
+            pst.setString(7, accountType);
+            pst.setString(8, userStatus);
+            pst.setString(9, imagePath);
+            pst.setString(10, userId);
+
+            int rowsAffected = pst.executeUpdate();
+            if (rowsAffected > 0) {
+                // Copy new image file if selected
+                if (selectedFile != null) {
+                    Files.copy(selectedFile.toPath(), new File(imagePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                }
+                JOptionPane.showMessageDialog(this, "User updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                insertLog(username, "Updated user details: " + username);
+            } else {
+                JOptionPane.showMessageDialog(this, "Update failed. User not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    } catch (SQLException | IOException ex) {
+        JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
     }//GEN-LAST:event_updateActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
@@ -730,9 +845,39 @@ private void insertLog(String username, String action) {
         // TODO add your handling code here:
     }//GEN-LAST:event_ustatusActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        selectedFile = fileChooser.getSelectedFile();
+                        destination = "src/Images/" + selectedFile.getName();
+                        path  = selectedFile.getAbsolutePath();
+                        
+                        
+                        if(FileExistenceChecker(path) == 1){
+                          JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
+                            destination = "";
+                            path="";
+                        }else{
+                            image.setIcon(ResizeImage(path, null, image));
+                            select.setEnabled(false);
+                            remove.setEnabled(true);
+                            
+                        }
+                    } catch (Exception ex) {
+                        System.out.println("File Error!"+ex);
+                    }
+                }
+    }//GEN-LAST:event_selectActionPerformed
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+         remove.setEnabled(false);
+       select.setEnabled(true);
+       image.setIcon(null);
+       destination = "";
+       path = "";
+    }//GEN-LAST:event_removeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -779,8 +924,7 @@ private void insertLog(String username, String action) {
     public javax.swing.JButton add;
     private javax.swing.JButton clear;
     private javax.swing.JButton delete;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JLabel image;
     public javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -801,6 +945,8 @@ private void insertLog(String username, String action) {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    public javax.swing.JButton remove;
+    public javax.swing.JButton select;
     public javax.swing.JTextField uid;
     public javax.swing.JButton update;
     public javax.swing.JTextField userReg;

@@ -6,6 +6,7 @@
 package Login;
 
 
+import User.ForgotPassword;
 import config.DbConnect;
 import config.PassHasher;
 import config.Session;
@@ -52,6 +53,7 @@ public class LoginForm extends javax.swing.JFrame {
         Rbutton = new javax.swing.JButton();
         Lbutton = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,6 +144,15 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 30, 30));
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel5.setText("Forgot password");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 430, 520));
 
@@ -255,6 +266,12 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    ForgotPassword ff = new ForgotPassword();
+    ff.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -298,6 +315,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

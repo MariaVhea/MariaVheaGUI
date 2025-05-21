@@ -55,6 +55,41 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel20 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        jPanel24 = new javax.swing.JPanel();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jPanel28 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jPanel32 = new javax.swing.JPanel();
+        jPanel33 = new javax.swing.JPanel();
+        jPanel34 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,6 +191,158 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 740, 30));
 
+        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel21.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel20.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 90, 20));
+
+        jPanel22.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel20.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 20, 70));
+
+        jLabel11.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel11.setText("STUDENTS");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel20.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 90, -1));
+
+        jPanel23.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel24.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel23.add(jPanel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
+
+        jPanel25.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel23.add(jPanel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
+
+        jLabel12.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel12.setText("VIOLATIONS");
+        jPanel23.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel20.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 160, 170));
+
+        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel27.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel26.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
+
+        jPanel28.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel26.add(jPanel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
+
+        jLabel13.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel13.setText("VIOLATIONS");
+        jPanel26.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel29.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel29.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel30.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel29.add(jPanel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
+
+        jPanel31.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel29.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
+
+        jLabel14.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel14.setText("VIOLATIONS");
+        jPanel29.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel26.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 160, 170));
+
+        jPanel20.add(jPanel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 160, 170));
+
+        jPanel32.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel20.add(jPanel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 30, 40));
+
+        jPanel33.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel20.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, 20));
+
+        jPanel34.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel20.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, 30));
+
+        jPanel5.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 160, 170));
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 30));
+
+        jPanel13.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel11.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 30, 60));
+
+        jLabel8.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel8.setText("RECORDS");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel11.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel5.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 160, 170));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
+
+        jPanel10.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
+
+        jLabel7.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel7.setText("VIOLATIONS");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel15.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel14.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
+
+        jPanel16.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel14.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
+
+        jLabel9.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel9.setText("VIOLATIONS");
+        jPanel14.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel18.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel17.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
+
+        jPanel19.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel17.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
+
+        jLabel10.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel10.setText("VIOLATIONS");
+        jPanel17.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+
+        jPanel14.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 160, 170));
+
+        jPanel8.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 160, 170));
+
+        jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 160, 170));
+
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 520));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -210,6 +397,24 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel6MouseClicked
 
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+      Students ss = new Students();
+      ss.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+     Violations vv = new Violations();
+     vv.setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+     Records rr = new Records();
+     rr.setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -249,18 +454,53 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel acc_lname;
     private javax.swing.JLabel acc_name;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
         }
 

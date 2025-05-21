@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package config;
 
-/**
- *
- * @author HP
- */
+
 public class Session {
     
        private static Session instance;
@@ -19,6 +12,15 @@ public class Session {
        private String username;
        private String type;
        private String status;
+        private String sq;
+         private String ans;
+         private String password;
+         private String contact;
+
+
+    
+
+  
        
        private Session(){
            
@@ -90,5 +92,34 @@ public class Session {
         this.status = status;
     }
     
+      public String getSq() {
+        return sq;
+    }
+
+    public void setSq(String sq) {
+        this.sq = sq;
+    }
+
+    public String getAns() {
+        return ans;
+    }
+
+    public void setAns(String ans) {
+        this.ans = ans;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 }

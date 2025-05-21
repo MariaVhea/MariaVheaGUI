@@ -15,6 +15,17 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 import Login.LoginForm;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -46,7 +57,85 @@ public class UserDashboard extends javax.swing.JFrame {
         }
 
     } 
+        public String destination;
+   File selectedFile;
+   public String oldpath;
+   public String path;
+   
     
+
+
+
+public int FileExistenceChecker(String path){
+        File file = new File(path);
+        String fileName = file.getName();
+        
+        Path filePath = Paths.get("src/Images", fileName);
+        boolean fileExists = Files.exists(filePath);
+        
+        if (fileExists) {
+            return 1;
+        } else {
+            return 0;
+        }
+    
+    }
+public void imageUpdater(String existingFilePath, String newFilePath){
+        File existingFile = new File(existingFilePath);
+        if (existingFile.exists()) {
+            String parentDirectory = existingFile.getParent();
+            File newFile = new File(newFilePath);
+            String newFileName = newFile.getName();
+            File updatedFile = new File(parentDirectory, newFileName);
+            existingFile.delete();
+            try {
+                Files.copy(newFile.toPath(), updatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Image updated successfully.");
+            } catch (IOException e) {
+                System.out.println("Error occurred while updating the image: "+e);
+            }
+        } else {
+            try{
+                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            }catch(IOException e){
+                System.out.println("Error on update!");
+            }
+        }
+   }
+public ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = (ImagePath != null) ? new ImageIcon(ImagePath) : new ImageIcon(pic);
+
+    int labelWidth = label.getWidth();
+    if (labelWidth == 0) labelWidth = 150; // fallback width if not initialized
+
+    int newHeight = getHeightFromWidth(ImagePath, labelWidth);
+    if (newHeight <= 0) newHeight = 150; // fallback height
+
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(labelWidth, newHeight, Image.SCALE_SMOOTH);
+    return new ImageIcon(newImg);
+}
+
+public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+        try {
+            
+            File imageFile = new File(imagePath);
+            BufferedImage image = ImageIO.read(imageFile);
+            
+           
+            int originalWidth = image.getWidth();
+            int originalHeight = image.getHeight();
+            
+            
+            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
+            
+            return newHeight;
+        } catch (IOException ex) {
+            System.out.println("No image found!"+ex);
+        }
+        
+        return -1;
+    }
     
     
     
@@ -259,6 +348,26 @@ public class UserDashboard extends javax.swing.JFrame {
                 uf.Passreg.setText(""+rs.getString("ps"));
                 uf.jComboBox1.setSelectedItem(""+rs.getString("type"));
                 uf.ustatus.setSelectedItem(""+rs.getString("status"));
+                
+                 String imagePath = rs.getString("image");
+                uf.oldpath = imagePath;
+                uf.path = imagePath;
+                uf.destination = imagePath;
+                
+                 try {
+                    if (imagePath != null && !imagePath.isEmpty()) {
+                        uf.image.setIcon(uf.ResizeImage(imagePath, null, uf.image));
+                        uf.select.setEnabled(false);
+                        uf.remove.setEnabled(true);
+                    } else {
+                        uf.select.setEnabled(true);
+                        uf.remove.setEnabled(false);
+                    }
+                } catch (NullPointerException npEx) {
+                    System.out.println("Image loading failed: " + npEx.getMessage());
+                    uf.select.setEnabled(true);
+                    uf.remove.setEnabled(false);
+                }
                 uf.add.setEnabled(false);
                 uf.update.setEnabled(true);
                 uf.setVisible(true);

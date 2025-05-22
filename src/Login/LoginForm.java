@@ -45,7 +45,6 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         user = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -81,13 +80,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGIN ");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 360, 60));
 
         user.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         user.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +138,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel4.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 30, 30));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 255));
-        jLabel5.setText("Forgot password");
+        jLabel5.setText("Forgot password?");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -311,7 +303,6 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JButton Lbutton;
     private javax.swing.JButton Rbutton;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

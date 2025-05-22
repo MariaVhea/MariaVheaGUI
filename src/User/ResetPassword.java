@@ -18,8 +18,9 @@ public class ResetPassword extends javax.swing.JFrame {
 
     
     public ResetPassword() {
+                setUndecorated(true);
+
         initComponents();
-        setUndecorated(true);
     }
 
    private boolean updatePassword(String newPassword) {
@@ -28,7 +29,7 @@ public class ResetPassword extends javax.swing.JFrame {
 
     if (hashedNewPassword == null) return false;
 
-    String sql = "UPDATE users SET Pname = ? WHERE id = ?";
+    String sql = "UPDATE users SET ps = ? WHERE u_id = ?";
 
     try (Connection connect = new DbConnect().getConnection();
          PreparedStatement pst = connect.prepareStatement(sql)) {
@@ -63,9 +64,7 @@ public static String hashPassword(String password) {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        acc_id = new javax.swing.JLabel();
         BackButton = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         verify = new javax.swing.JButton();
@@ -74,6 +73,9 @@ public static String hashPassword(String password) {
         confirmpassword = new javax.swing.JPasswordField();
         oldpassword = new javax.swing.JPasswordField();
         newpassword = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        acc_id = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -88,88 +90,81 @@ public static String hashPassword(String password) {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setForeground(new java.awt.Color(102, 102, 102));
-
-        acc_id.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        acc_id.setText("id");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        BackButton.setText("Back");
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/dfdaec60bb19479993e7978e3f299d03__2_-removebg-preview.png"))); // NOI18N
         BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BackButtonMouseClicked(evt);
             }
         });
+        jPanel2.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel4.setText("You can now reset your password");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
-                .addComponent(acc_id, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(325, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(acc_id)
-                        .addComponent(jLabel4))
-                    .addComponent(BackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
         jPanel3.setForeground(new java.awt.Color(102, 102, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Confirm Password:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 420, -1));
 
-        verify.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        verify.setBackground(new java.awt.Color(255, 255, 255));
+        verify.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        verify.setForeground(new java.awt.Color(0, 102, 102));
         verify.setText("Reset");
         verify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verifyActionPerformed(evt);
             }
         });
-        jPanel3.add(verify, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 150, 30));
+        jPanel3.add(verify, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 90, 30));
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Old Password:");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 420, -1));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("New Password:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 420, -1));
-        jPanel3.add(confirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 530, 30));
+        jPanel3.add(confirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 190, 30));
 
         oldpassword.setEditable(false);
         oldpassword.setText("asdasdsadadda");
-        jPanel3.add(oldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 530, 30));
-        jPanel3.add(newpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 530, 30));
+        jPanel3.add(oldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 190, 30));
+        jPanel3.add(newpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 190, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 610, 330));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, 330));
+
+        jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("You can now reset your password");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 250, -1));
+
+        acc_id.setFont(new java.awt.Font("Arial Narrow", 2, 24)); // NOI18N
+        acc_id.setForeground(new java.awt.Color(0, 102, 102));
+        acc_id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acc_id.setText("ID");
+        jPanel1.add(acc_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 40, 30));
+
+        jLabel1.setFont(new java.awt.Font("Arial Narrow", 2, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setText("USER ID:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 90, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,8 +227,8 @@ public static String hashPassword(String password) {
     }//GEN-LAST:event_formWindowActivated
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
-        SQchoice lf = new SQchoice();
-        lf.setVisible(true);
+        SQchoice sc = new SQchoice();
+        sc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackButtonMouseClicked
 
@@ -276,6 +271,7 @@ public static String hashPassword(String password) {
     private javax.swing.JLabel BackButton;
     private javax.swing.JLabel acc_id;
     private javax.swing.JPasswordField confirmpassword;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

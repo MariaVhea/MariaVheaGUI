@@ -33,16 +33,16 @@ public class changePass extends javax.swing.JFrame {
         acc_fnfn = new javax.swing.JLabel();
         idDisplay = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        oldpass = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        newpass = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        conpass = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        conpass = new javax.swing.JPasswordField();
+        oldpass = new javax.swing.JPasswordField();
+        newpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,13 +93,6 @@ public class changePass extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        oldpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldpassActionPerformed(evt);
-            }
-        });
-        jPanel3.add(oldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 180, 30));
-
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel7.setText("Type Old Password:");
@@ -109,23 +102,9 @@ public class changePass extends javax.swing.JFrame {
         jLabel8.setText("Enter New Password:");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 160, 30));
 
-        newpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newpassActionPerformed(evt);
-            }
-        });
-        jPanel3.add(newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 180, 30));
-
         jLabel9.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel9.setText("Confirm Password:");
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 160, 30));
-
-        conpass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                conpassActionPerformed(evt);
-            }
-        });
-        jPanel3.add(conpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 180, 30));
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 102));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,24 +137,15 @@ public class changePass extends javax.swing.JFrame {
         jLabel5.setBounds(0, -10, 80, 50);
 
         jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 80, 30));
+        jPanel3.add(conpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 210, 30));
+        jPanel3.add(oldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 210, 30));
+        jPanel3.add(newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 210, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 710, 460));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void oldpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_oldpassActionPerformed
-
-    private void newpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newpassActionPerformed
-
-    private void conpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conpassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_conpassActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Session sess = Session.getInstance();
@@ -195,51 +165,53 @@ public class changePass extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-    try {
-    DbConnect dbc = new DbConnect();
-    Session sess = Session.getInstance();
-    String olddbpass;
+   try {
+        DbConnect dbc = new DbConnect();
+        Session sess = Session.getInstance();
 
-    String query = "SELECT * FROM users WHERE u_id = '" + sess.getUid() + "'";
-    ResultSet resultSet = dbc.getData(query);
+        String query = "SELECT * FROM users WHERE u_id = '" + sess.getUid() + "'";
+        ResultSet resultSet = dbc.getData(query);
 
-    if (resultSet.next()) {
-        olddbpass = resultSet.getString("ps"); 
+        if (resultSet.next()) {
+            String olddbpass = resultSet.getString("ps"); 
 
-        String oldhash = PassHasher.hashPassword(oldpass.getText());
-        if (olddbpass.equals(oldhash)) {
-            
-            if (newpass.getText().equals(oldpass.getText())) {
-                JOptionPane.showMessageDialog(null, "New password cannot be the same as the old password!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;  
+            // Correctly get password from JPasswordField
+            String oldPassword = new String(oldpass.getPassword());
+            String newPassword = new String(newpass.getPassword());
+            String confirmPassword = new String(conpass.getPassword());
+
+            String oldhash = PassHasher.hashPassword(oldPassword);
+
+            if (olddbpass.equals(oldhash)) {
                 
+                if (newPassword.equals(oldPassword)) {
+                    JOptionPane.showMessageDialog(null, "New password cannot be the same as the old password!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;  
+                }
+
+                if (!newPassword.equals(confirmPassword)) {
+                    JOptionPane.showMessageDialog(null, "New Password and Confirm Password do not match!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;  
+                }
+
+                String npass = PassHasher.hashPassword(newPassword);
+                dbc.updateData("UPDATE users SET ps = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
+
+                JOptionPane.showMessageDialog(null, "Successfully Updated!");
+                LoginForm lg = new LoginForm();
+                lg.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Old Password is Incorrect!");
             }
-
-            
-            if (!newpass.getText().equals(conpass.getText())) {
-                JOptionPane.showMessageDialog(null, "New Password and Confirm Password do not match!", "Error", JOptionPane.ERROR_MESSAGE);
-                return;  
-            }
-
-            
-            String npass = PassHasher.hashPassword(newpass.getText());
-            dbc.updateData("UPDATE users SET ps = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
-
-            JOptionPane.showMessageDialog(null, "Successfully Updated!");
-            LoginForm lg = new LoginForm();
-            lg.setVisible(true);
-            this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Old Password is Incorrect!");
+            JOptionPane.showMessageDialog(null, "User not found!");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "User not found!");
-    }
 
-    resultSet.close(); 
-} catch (SQLException | NoSuchAlgorithmException ex) {
-    System.out.println("Error: " + ex);
-}
+        resultSet.close(); 
+    } catch (SQLException | NoSuchAlgorithmException ex) {
+        System.out.println("Error: " + ex);
+    }
 
     }//GEN-LAST:event_jPanel5MouseClicked
 
@@ -283,7 +255,7 @@ public class changePass extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acc_fnfn;
     private javax.swing.JLabel acc_lnln;
-    private javax.swing.JTextField conpass;
+    private javax.swing.JPasswordField conpass;
     private javax.swing.JLabel idDisplay;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -297,7 +269,7 @@ public class changePass extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField newpass;
-    private javax.swing.JTextField oldpass;
+    private javax.swing.JPasswordField newpass;
+    private javax.swing.JPasswordField oldpass;
     // End of variables declaration//GEN-END:variables
 }

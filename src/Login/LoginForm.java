@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -189,6 +191,10 @@ public class LoginForm extends javax.swing.JFrame {
             String dbPasswordHash = rs.getString("ps"); 
             String status = rs.getString("status");
             String userType = rs.getString("type");
+            
+    System.out.println("Input Password: '" + passwordInput + "'");
+    System.out.println("Stored Hash: '" + dbPasswordHash + "'");
+    System.out.println("Hashed Input Password: '" + PassHasher.hashPassword(passwordInput) + "'");
 
             if (status.equalsIgnoreCase("Pending")) {
                 JOptionPane.showMessageDialog(this, "Your account is pending approval. Please wait for admin approval.", "Access Denied", JOptionPane.ERROR_MESSAGE);
@@ -235,7 +241,9 @@ public class LoginForm extends javax.swing.JFrame {
         
     } catch (SQLException ex) {
         JOptionPane.showMessageDialog(this, "Database Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+    }   catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_LbuttonActionPerformed
 

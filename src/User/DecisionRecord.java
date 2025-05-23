@@ -32,6 +32,7 @@ public class DecisionRecord extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSpinner1 = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -115,7 +116,7 @@ public class DecisionRecord extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Your violations");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 220, 40));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 170, 40));
 
         jPanel5.setBackground(new java.awt.Color(247, 247, 247));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,7 +127,7 @@ public class DecisionRecord extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(204, 0, 0));
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 20, 20));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 160, 110));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 160, 110));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 740, 500));
 
@@ -214,6 +215,7 @@ public class DecisionRecord extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel u_fname;
     private javax.swing.JLabel u_lname;
     // End of variables declaration//GEN-END:variables

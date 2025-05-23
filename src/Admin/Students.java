@@ -81,13 +81,12 @@ public void loadStudentsToTable() {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Lbutton = new javax.swing.JButton();
-        acc_name = new javax.swing.JLabel();
-        acc_lname = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -102,7 +101,7 @@ public void loadStudentsToTable() {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 130, 130));
 
         Lbutton.setBackground(new java.awt.Color(0, 102, 102));
         Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -114,25 +113,6 @@ public void loadStudentsToTable() {
         });
         jPanel4.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 110, 30));
 
-        acc_name.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_name.setForeground(new java.awt.Color(0, 102, 102));
-        acc_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_name.setText("ADMIN");
-        jPanel4.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 170, 30));
-
-        acc_lname.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_lname.setForeground(new java.awt.Color(0, 102, 102));
-        acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_lname.setText("ADMIN");
-        jPanel4.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 30));
-
-        jLabel5.setBackground(new java.awt.Color(0, 102, 102));
-        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("STUDENT PAGE");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 40));
-
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +120,7 @@ public void loadStudentsToTable() {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 170, 30));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 170, 30));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete");
@@ -149,7 +129,7 @@ public void loadStudentsToTable() {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 30));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 170, 30));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Back");
@@ -158,11 +138,28 @@ public void loadStudentsToTable() {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 170, 30));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 170, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/dfdaec60bb19479993e7978e3f299d03__2_-removebg-preview.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("STUDENT PAGE");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 30));
+
         jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 740, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -269,6 +266,12 @@ public void loadStudentsToTable() {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+         AdminDashboard ds = new AdminDashboard();
+        ds.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -306,11 +309,10 @@ public void loadStudentsToTable() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Lbutton;
-    private javax.swing.JLabel acc_lname;
-    private javax.swing.JLabel acc_name;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;

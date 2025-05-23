@@ -76,11 +76,9 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        Lbutton = new javax.swing.JButton();
-        acc_name = new javax.swing.JLabel();
-        acc_lname = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         txtViolationType = new javax.swing.JTextField();
         txtDescription = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -105,124 +103,93 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 130, 130));
 
-        Lbutton.setBackground(new java.awt.Color(0, 102, 102));
-        Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Lbutton.setText("LOGOUT");
-        Lbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LbuttonActionPerformed(evt);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/dfdaec60bb19479993e7978e3f299d03__2_-removebg-preview.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
             }
         });
-        jPanel4.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 110, 30));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
-        acc_name.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_name.setForeground(new java.awt.Color(0, 102, 102));
-        acc_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_name.setText("ADMIN");
-        jPanel4.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 170, 30));
+        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
-        acc_lname.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_lname.setForeground(new java.awt.Color(0, 102, 102));
-        acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_lname.setText("ADMIN");
-        jPanel4.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 30));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setBackground(new java.awt.Color(0, 102, 102));
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("ADMIN DASHBOARD");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 40));
+        jLabel5.setText("ADD VIOLATION");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
-        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
+        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 590, 30));
+        jPanel5.add(txtViolationType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 210, 30));
+        jPanel5.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 210, 50));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 740, 30));
-        jPanel5.add(txtViolationType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 360, 30));
-        jPanel5.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 360, 40));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("User ID:");
         jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Violation Type:");
         jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Description:");
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Date Reported:");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, -1, -1));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Status:");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 102, 102));
         jButton1.setText("Generate Violation");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, 230, 40));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 170, 40));
 
         cmbStudents.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel5.add(cmbStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 360, 40));
+        jPanel5.add(cmbStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 210, 30));
 
-        cmbStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbStatus.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Resolved" }));
-        jPanel5.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 360, 40));
+        jPanel5.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 210, 30));
 
         jScrollPane1.setViewportView(txtDateReported);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 360, 50));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 210, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
-        Session sess = Session.getInstance();
-        DbConnect dbc = new DbConnect();
-        dbc.insertLog(sess.getUid(), "Logged out from the system");
-
-        LoginForm login = new LoginForm();
-        login.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_LbuttonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    // Validate student selection
@@ -308,6 +275,12 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        Violations vi = new Violations();
+        vi.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -344,12 +317,10 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Lbutton;
-    private javax.swing.JLabel acc_lname;
-    private javax.swing.JLabel acc_name;
     private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JComboBox<String> cmbStudents;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

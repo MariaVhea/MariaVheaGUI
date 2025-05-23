@@ -79,14 +79,12 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Lbutton = new javax.swing.JButton();
-        acc_name = new javax.swing.JLabel();
-        acc_lname = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         generateviolation = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -113,25 +111,6 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         });
         jPanel4.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 110, 30));
 
-        acc_name.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_name.setForeground(new java.awt.Color(0, 102, 102));
-        acc_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_name.setText("ADMIN");
-        jPanel4.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 170, 30));
-
-        acc_lname.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_lname.setForeground(new java.awt.Color(0, 102, 102));
-        acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_lname.setText("ADMIN");
-        jPanel4.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 30));
-
-        jLabel5.setBackground(new java.awt.Color(0, 102, 102));
-        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("VIOLATIONS");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 40));
-
         generateviolation.setBackground(new java.awt.Color(255, 255, 255));
         generateviolation.setText("Generate Violation");
         generateviolation.addActionListener(new java.awt.event.ActionListener() {
@@ -148,16 +127,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 30));
-
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 170, 30));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Resolve");
@@ -166,11 +136,28 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 170, 30));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 170, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/dfdaec60bb19479993e7978e3f299d03__2_-removebg-preview.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("VIOLATIONS");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 30));
+
         jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 740, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -274,12 +261,6 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
     }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        AdminDashboard aa = new AdminDashboard();
-        aa.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        int selectedRow = jTable1.getSelectedRow();
 
@@ -314,6 +295,12 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         e.printStackTrace();
     }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        AdminDashboard ds = new AdminDashboard();
+        ds.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -352,12 +339,10 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Lbutton;
-    private javax.swing.JLabel acc_lname;
-    private javax.swing.JLabel acc_name;
     private javax.swing.JButton generateviolation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;

@@ -116,6 +116,11 @@ public class DecisionRecord extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Your violations");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 170, 40));
 
         jPanel5.setBackground(new java.awt.Color(247, 247, 247));
@@ -166,6 +171,12 @@ public class DecisionRecord extends javax.swing.JFrame {
     this.dispose();
     
     }//GEN-LAST:event_LbuttonActionPerformed
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        UsersViolations us = new UsersViolations();
+        us.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

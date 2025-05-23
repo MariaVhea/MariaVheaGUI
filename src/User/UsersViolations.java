@@ -26,6 +26,7 @@ public class UsersViolations extends javax.swing.JFrame {
      */
     public UsersViolations() {
         initComponents();
+        loadCurrentUserViolations();
     }
 public void loadCurrentUserViolations() {
     Session sess = Session.getInstance();
@@ -34,39 +35,45 @@ public void loadCurrentUserViolations() {
     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
     model.setRowCount(0); // Clear existing rows
 
-    try {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/mariavhea", "root", "");
+    // Optional: Set headers manually (if not already set in GUI Designer)
+    String[] headers = {"Violation ID", "Student Number", "Course", "Violation Type", "Description", "Date Reported", "Status"};
+    model.setColumnIdentifiers(headers);
 
-        String sql = "SELECT v.violation_id, s.student_number, s.course, v.violation_type, v.description, v.date_reported, v.status " +
-                     "FROM violations v " +
-                     "JOIN students s ON v.student_id = s.student_id " +
-                     "WHERE s.u_id = ?";
+    String query = 
+    "SELECT v.violation_id, s.student_number, s.course, " +
+    "v.violation_type, v.description, v.date_reported, v.status " +
+    "FROM violations v " +
+    "JOIN students s ON v.student_id = s.student_id " +
+    "WHERE s.u_id = ?";
 
-        PreparedStatement pstmt = conn.prepareStatement(sql);
+    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/mariavhea", "root", "");
+         PreparedStatement pstmt = conn.prepareStatement(query)) {
+
         pstmt.setInt(1, userId);
-        ResultSet rs = pstmt.executeQuery();
 
-        while (rs.next()) {
-            int violationId = rs.getInt("violation_id");
-            String studentNumber = rs.getString("student_number");
-            String course = rs.getString("course");
-            String violationType = rs.getString("violation_type");
-            String description = rs.getString("description");
-            Date dateReported = rs.getDate("date_reported");
-            String status = rs.getString("status");
-
-            model.addRow(new Object[]{violationId, studentNumber, course, violationType, description, dateReported, status});
+        try (ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("violation_id"),
+                    rs.getString("student_number"),
+                    rs.getString("course"),
+                    rs.getString("violation_type"),
+                    rs.getString("description"),
+                    rs.getDate("date_reported"),
+                    rs.getString("status")
+                });
+            }
         }
 
-        rs.close();
-        pstmt.close();
-        conn.close();
-
     } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Error loading violation data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+            "Error loading violation data: " + e.getMessage(),
+            "Database Error",
+            JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();
     }
 }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

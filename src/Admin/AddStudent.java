@@ -89,7 +89,7 @@ public class AddStudent extends javax.swing.JFrame {
         jLabel5.setText("STUDENT FORM");
         jPanel2.add(jLabel5);
 
-        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 520, 30));
+        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 390, 30));
         jPanel5.add(txtUserId, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 230, 30));
         jPanel5.add(txtSection, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 230, 30));
         jPanel5.add(txtYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 230, 30));
@@ -104,7 +104,7 @@ public class AddStudent extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("User ID:");
+        jLabel3.setText("Enter Student's User ID:");
         jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
@@ -128,6 +128,7 @@ public class AddStudent extends javax.swing.JFrame {
         jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(0, 102, 102));
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +141,7 @@ public class AddStudent extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

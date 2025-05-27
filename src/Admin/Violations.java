@@ -78,7 +78,6 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        Lbutton = new javax.swing.JButton();
         generateviolation = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -101,17 +100,8 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
 
-        Lbutton.setBackground(new java.awt.Color(0, 102, 102));
-        Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Lbutton.setText("LOGOUT");
-        Lbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LbuttonActionPerformed(evt);
-            }
-        });
-        jPanel4.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 110, 30));
-
-        generateviolation.setBackground(new java.awt.Color(255, 255, 255));
+        generateviolation.setBackground(new java.awt.Color(0, 102, 102));
+        generateviolation.setForeground(new java.awt.Color(255, 255, 255));
         generateviolation.setText("Generate Violation");
         generateviolation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,23 +110,25 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         });
         jPanel4.add(generateviolation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 170, 30));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setBackground(new java.awt.Color(0, 102, 102));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 30));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 170, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Resolve");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 170, 30));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/dfdaec60bb19479993e7978e3f299d03__2_-removebg-preview.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,7 +165,7 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 670, -1));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 670, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,16 +191,6 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
-        Session sess = Session.getInstance();
-        DbConnect dbc = new DbConnect();
-        dbc.insertLog(sess.getUid(), "Logged out from the system");
-
-        LoginForm login = new LoginForm();
-        login.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_LbuttonActionPerformed
 
     private void generateviolationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateviolationActionPerformed
         generateViolation gg = new generateViolation();
@@ -338,7 +320,6 @@ try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/maria
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Lbutton;
     private javax.swing.JButton generateviolation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

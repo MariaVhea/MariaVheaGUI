@@ -6,15 +6,19 @@
 package Admin;
 
 import Login.LoginForm;
+import com.toedter.calendar.JDateChooser;
 import config.DbConnect;
 import config.Session;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.JOptionPane;
-
+import javax.swing.JTextField;
+import static javax.swing.text.html.HTML.Tag.DD;
 /**
  *
  * @author II
@@ -89,8 +93,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         jButton1 = new javax.swing.JButton();
         cmbStudents = new javax.swing.JComboBox<>();
         cmbStatus = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDateReported = new javax.swing.JTextPane();
+        txtDateReported = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -113,7 +116,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         });
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
-        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
+        jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 410));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,7 +130,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
 
         jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 590, 30));
         jPanel5.add(txtViolationType, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 210, 30));
-        jPanel5.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 210, 50));
+        jPanel5.add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 460, 40));
 
         jLabel3.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,7 +166,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 310, 170, 40));
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 170, 40));
 
         cmbStudents.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel5.add(cmbStudents, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 210, 30));
@@ -172,9 +175,9 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Resolved" }));
         jPanel5.add(cmbStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 210, 30));
 
-        jScrollPane1.setViewportView(txtDateReported);
-
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 210, 30));
+        txtDateReported.setDateFormatString("yyyy-MM-dd");
+        jPanel5.add(txtDateReported, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 210, 30));
+        txtDateReported.getAccessibleContext().setAccessibleParent(txtDateReported);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,7 +187,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 403, Short.MAX_VALUE)
         );
 
         pack();
@@ -192,8 +195,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   // Validate student selection
-    if (cmbStudents.getSelectedIndex() == -1) {
+  if (cmbStudents.getSelectedIndex() == -1) {
         JOptionPane.showMessageDialog(this, "Please select a student.", "Input Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
@@ -211,7 +213,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
     // Validate and get date from text field
     java.sql.Date dateReported;
     try {
-        String dateText = txtDateReported.getText().trim();
+String dateText = ((JTextField) txtDateReported.getDateEditor().getUiComponent()).getText().trim();
         if (dateText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter a violation date (YYYY-MM-DD).", "Input Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -253,7 +255,8 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
                 // Optional: clear input fields
                 txtViolationType.setText("");
                 txtDescription.setText("");
-                txtDateReported.setText("");
+                txtDateReported.setDateFormatString("yyyy-MM-dd");
+
                 cmbStudents.setSelectedIndex(-1);
                 cmbStatus.setSelectedIndex(0);
             } else {
@@ -267,6 +270,12 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
         JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         e.printStackTrace();
     }
+
+// Helper method you need for extracting student ID from combo box string:
+
+
+
+
 
 /**
  * Helper method to extract student ID from a combo box string item.
@@ -331,8 +340,7 @@ private int extractStudentId(String comboItem) throws NumberFormatException {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane txtDateReported;
+    private com.toedter.calendar.JDateChooser txtDateReported;
     private javax.swing.JTextField txtDescription;
     private javax.swing.JTextField txtViolationType;
     // End of variables declaration//GEN-END:variables

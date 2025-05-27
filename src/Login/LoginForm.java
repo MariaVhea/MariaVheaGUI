@@ -112,6 +112,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         Rbutton.setBackground(new java.awt.Color(0, 102, 102));
         Rbutton.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
+        Rbutton.setForeground(new java.awt.Color(255, 255, 255));
         Rbutton.setText("REGISTER");
         Rbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +123,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         Lbutton.setBackground(new java.awt.Color(0, 102, 102));
         Lbutton.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
+        Lbutton.setForeground(new java.awt.Color(255, 255, 255));
         Lbutton.setText("LOGIN");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +141,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel4.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 30, 30));
 
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 2, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 255));
         jLabel5.setText("Forgot password?");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +149,7 @@ public class LoginForm extends javax.swing.JFrame {
                 jLabel5MouseClicked(evt);
             }
         });
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 310, 80, 20));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 430, 520));
 

@@ -100,13 +100,13 @@ private void resetPassword() {
                 answerActionPerformed(evt);
             }
         });
-        jPanel3.add(answer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 410, 30));
+        jPanel3.add(answer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 460, 30));
 
         sq.setFont(new java.awt.Font("Arial Narrow", 2, 18)); // NOI18N
         sq.setForeground(new java.awt.Color(255, 255, 255));
         sq.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sq.setText("jLabel2");
-        jPanel3.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 410, 40));
+        jPanel3.add(sq, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 460, 40));
 
         verify.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         verify.setForeground(new java.awt.Color(0, 102, 102));

@@ -9,12 +9,14 @@ import Config.PDFExporter;
 import Login.LoginForm;
 import config.DbConnect;
 import config.Session;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -83,13 +85,10 @@ public void loadViolationRecords() {
 
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        Lbutton = new javax.swing.JButton();
-        acc_name = new javax.swing.JLabel();
-        acc_lname = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -104,55 +103,35 @@ public void loadViolationRecords() {
         jPanel4.setForeground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Profile_free_icons_designed_by_Freepik-removebg-preview__1_-removebg-preview.png"))); // NOI18N
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 130));
-
-        Lbutton.setBackground(new java.awt.Color(0, 102, 102));
-        Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        Lbutton.setText("LOGOUT");
-        Lbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LbuttonActionPerformed(evt);
-            }
-        });
-        jPanel4.add(Lbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 110, 30));
-
-        acc_name.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_name.setForeground(new java.awt.Color(0, 102, 102));
-        acc_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_name.setText("ADMIN");
-        jPanel4.add(acc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 170, 30));
-
-        acc_lname.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
-        acc_lname.setForeground(new java.awt.Color(0, 102, 102));
-        acc_lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        acc_lname.setText("ADMIN");
-        jPanel4.add(acc_lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 170, 30));
-
         jLabel5.setBackground(new java.awt.Color(0, 102, 102));
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("RECORDS");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 40));
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 170, 40));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Print");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 170, 30));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 30));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setBackground(new java.awt.Color(0, 102, 102));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 170, 30));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 170, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Free files icon vector png - Pixsector_ Free vector images, mockups, PSDs and photos (1).jpg"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, 150));
 
         jPanel5.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 520));
 
@@ -172,7 +151,7 @@ public void loadViolationRecords() {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 710, -1));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 710, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,26 +178,40 @@ public void loadViolationRecords() {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
-        Session sess = Session.getInstance();
-        DbConnect dbc = new DbConnect();
-        dbc.insertLog(sess.getUid(), "Logged out from the system");
-
-        LoginForm login = new LoginForm();
-        login.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_LbuttonActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      int[] selectedRows = jTable1.getSelectedRows();
+ int[] selectedRows = jTable1.getSelectedRows();
 
-    if (selectedRows.length == 0) {
-        JOptionPane.showMessageDialog(this, "Please select one or more rows to export.", "No Selection", JOptionPane.WARNING_MESSAGE);
-        return;
+if (selectedRows.length == 0) {
+    JOptionPane.showMessageDialog(this, "Please select one or more rows to export.", "No Selection", JOptionPane.WARNING_MESSAGE);
+    return;
+}
+
+// Set the correct column index for "Status"
+final int STATUS_COLUMN_INDEX = 8; // Adjust based on your table's column order
+
+   ArrayList<Integer> resolvedRows = new ArrayList<>();
+
+for (int rowIndex : selectedRows) {
+    int modelIndex = jTable1.convertRowIndexToModel(rowIndex); // In case sorting is used
+    String status = jTable1.getModel().getValueAt(modelIndex, STATUS_COLUMN_INDEX).toString();
+
+    if (status.equalsIgnoreCase("Resolved")) {
+        resolvedRows.add(rowIndex);
     }
+}
 
-    // Call the PDF exporter
-    PDFExporter.exportSelectedRowsToPDF(jTable1, selectedRows);
+if (resolvedRows.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Only print rows with the status 'Resolved'.", "Warning!", JOptionPane.WARNING_MESSAGE);
+    return;
+}
+
+// Convert to int[]
+int[] resolvedRowArray = resolvedRows.stream().mapToInt(i -> i).toArray();
+
+// Export
+PDFExporter.exportSelectedRowsToPDF(jTable1, resolvedRowArray);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -263,12 +256,9 @@ public void loadViolationRecords() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Lbutton;
-    private javax.swing.JLabel acc_lname;
-    private javax.swing.JLabel acc_name;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;

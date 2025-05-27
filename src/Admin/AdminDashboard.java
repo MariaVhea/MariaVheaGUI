@@ -56,8 +56,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
-        jPanel22 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -71,16 +69,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel30 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jPanel32 = new javax.swing.JPanel();
-        jPanel33 = new javax.swing.JPanel();
-        jPanel34 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -90,6 +83,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel18 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -115,6 +109,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         Lbutton.setBackground(new java.awt.Color(0, 102, 102));
         Lbutton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        Lbutton.setForeground(new java.awt.Color(255, 255, 255));
         Lbutton.setText("LOGOUT");
         Lbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,21 +189,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel21.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel20.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 90, 20));
-
-        jPanel22.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel20.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 20, 70));
-
         jLabel11.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("STUDENTS");
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel20.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 90, -1));
+        jPanel20.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 160, 30));
 
         jPanel23.setBackground(new java.awt.Color(255, 255, 255));
         jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -258,56 +248,53 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel20.add(jPanel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 160, 170));
 
-        jPanel32.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel20.add(jPanel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 30, 40));
-
-        jPanel33.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel20.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, 20));
-
-        jPanel34.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel20.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 90, 30));
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Vector Icono De Lectura PNG ,dibujos Icono De Educación, Conocimiento Icono, Biblioteca De Icono PNG y Vector para Descargar Gratis _ Pngtree.jpg"))); // NOI18N
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel20.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
 
         jPanel5.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 160, 170));
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel12.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 120, 30));
-
-        jPanel13.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel11.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 30, 60));
-
         jLabel8.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("RECORDS");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel11.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+        jPanel11.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 160, 30));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/Free files icon vector png - Pixsector_ Free vector images, mockups, PSDs and photos (1).jpg"))); // NOI18N
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
+        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, 150));
 
         jPanel5.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 160, 170));
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel8.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 20, 70));
-
-        jPanel10.setBackground(new java.awt.Color(204, 0, 0));
-        jPanel8.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 20, 20));
-
         jLabel7.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("VIOLATIONS");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
             }
         });
-        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 100, -1));
+        jPanel8.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 160, 30));
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -340,6 +327,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel14.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 160, 170));
 
         jPanel8.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, 160, 170));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pics/download (6) (4).jpg"))); // NOI18N
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 140));
 
         jPanel5.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 160, 170));
 
@@ -415,6 +410,24 @@ public class AdminDashboard extends javax.swing.JFrame {
      this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+         Violations vv = new Violations();
+         vv.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+     Records rr = new Records();
+     rr.setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+      Students ss = new Students();
+      ss.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -459,6 +472,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -468,10 +484,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -480,8 +493,6 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
@@ -492,15 +503,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
-    private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
         }
 

@@ -55,6 +55,7 @@ public class LoginForm extends javax.swing.JFrame {
         Lbutton = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,6 +151,12 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 310, 80, 20));
+
+        jLabel1.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("LOGIN FORM");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 260, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 430, 520));
 
@@ -314,6 +321,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JButton Lbutton;
     private javax.swing.JButton Rbutton;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
